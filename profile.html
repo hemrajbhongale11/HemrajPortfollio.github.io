@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <!-- Google Fonts Stylish -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    body{
+      background: #0a0a0a;
+      color: #eaeaea;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Navbar */
+    nav{
+      height: 60px;
+      width: 100%;
+      background-color: #111;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+    }
+    nav a{
+      color: #bbb;
+      font-size: 16px;
+      text-decoration: none;
+      position: relative;
+      transition: 0.3s;
+    }
+    nav a::after{
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      left: 0;
+      bottom: -5px;
+      transition: 0.3s;
+    }
+    nav a:hover{
+      color: #eaff00;
+    }
+    nav a:hover::after{
+      width: 100%;
+    }
+
+    /* Sections */
+    section{
+      min-height: 100vh;
+      padding: 100px 20px 50px;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeUp 1s ease forwards;
+    }
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Home */
+    #home{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    #home h1{
+      font-family: 'Great Vibes', cursive;
+      font-size: 70px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #ff0057);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientFlow 5s infinite linear;
+    }
+    @keyframes gradientFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    #home p{
+      font-size: 20px;
+      color: #ccc;
+      max-width: 600px;
+    }
+
+    /* Responsive Text */
+    @media (max-width: 768px){
+      #home h1{ font-size: 50px; }
+      #home p{ font-size: 16px; }
+      nav a{ font-size: 14px; }
+    }
+    @media (max-width: 480px){
+      #home h1{ font-size: 38px; }
+      #home p{ font-size: 14px; }
+    }
+
+    /* About */
+    #about{
+      background: #121212;
+    }
+    #about h2{
+      color: #ff0057;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    #about div{
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+    }
+    #about img{
+      width: 180px;
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      transition: 0.4s;
+    }
+    #about img:hover{
+      transform: scale(1.08);
+      box-shadow: 0 0 20px #ff0057;
+    }
+    #about div p{
+      max-width: 700px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    /* Education */
+    #education{
+      background: #181818;
+    }
+    #education h2{
+      color: #ff7b00;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .edu-box{
+      background: #222;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      transition: 0.4s;
+      border: 1px solid #333;
+    }
+    .edu-box:hover{
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 0 15px rgba(255, 0, 87, 0.6);
+    }
+
+    /* Skills */
+    #skills{
+      background: #151515;
+    }
+    #skills h2{
+      color: #f6ff00;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+    .skill-box{
+      background: #222;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 10px;
+      border: 1px solid #333;
+      transition: 0.4s;
+    }
+    .skill-box:hover{
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 0 15px rgba(179, 0, 255, 0.6);
+    }
+    .skill-box h3{
+      color: #00aaff;
+      margin-bottom: 8px;
+    }
+    .skill-box p{
+      color: #ddd;
+    }
+
+    /* Contact */
+    #contact{
+      background: #101010;
+      text-align: center;
+    }
+    #contact h2{
+      color: #00d4ff;
+      margin-bottom: 15px;
+    }
+
+    /* Buttons */
+    .btn{
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: linear-gradient(90deg, #ff0057, #ff7b00);
+      color: white;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+    .btn:hover{
+      box-shadow: 0 0 15px #00fff2;
+      transform: scale(1.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+    <a target="_blank" href="https://www.linkedin.com/in/hemraj-bhongale-1a6870288/">LinkedIn</a>
+  </nav>
+
+  <!-- Home -->
+  <section id="home">
+    <h1>I'm Hemraj Bhongale</h1>
+    <p>Welcome to my Portfolio Website. I’m an aspiring Software Developer, CS Student & Intern at Qspider.</p>
+    <a href="#contact" class="btn">Hire Me</a>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div>
+      <img src="./assets/profilrPhoto.jpg" alt="Hemraj Bhongale">
+      <div>
+        <p>I come from a farmer family, where I have learned the true value of hard work, dedication, and consistency. These qualities have shaped my personality and given me the strength to face challenges with a positive mindset. I strongly believe that success comes through continuous effort and a never-give-up attitude.</p>
+
+        <p>I have successfully completed my <b>B.Sc. in Computer Science</b> from <b>Savitribai Phule Pune University</b> with a <b>7.75 CGPA</b>. During this journey, I gained a solid foundation in computer science concepts, problem-solving, and logical thinking.</p>
+
+        <p>Currently, I am pursuing my <b>M.Sc. in Computer Science</b> from <b>PDEA’s Annasaheb Magar College, Hadapsar</b>, which is helping me strengthen my academic knowledge while keeping me aligned with industry requirements.</p>
+
+        <p>Alongside academics, since <b>June 2025</b>, I have been pursuing a <b>Python Full Stack with Data Analytics</b> course at <b>QSpiders, Hadapsar</b>. This training has given me practical exposure to full-stack development, database management, and data analysis, enhancing both my technical and problem-solving abilities.</p>
+
+        <p>My ultimate goal is to secure a position in a reputed <b>MNC company</b>, where I can apply my knowledge and continuously grow as a professional. I aspire to work on innovative projects, contribute meaningfully to the organization, and make my family proud by turning my hard work into achievements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-box">
+      <h3>B.Sc. Computer Science</h3>
+      <p>Courses: OS-II, Software Testing, Web Tech-II, Data Analytics, OOP Java-II, Compiler Construction</p>
+      <p>2022 - 2025 </p>
+      <p>Cgpa - 7.75 </p>
+    </div>
+    <div class="edu-box">
+      <h3>Project</h3>
+      <p>Advance AI Chatbot</p>
+      <p>This project aims to develop a powerful Large Language Model (LLM), similar to Google Gemini, capable of performing a wide range of tasks with exceptional accuracy and fluency. It is designed to understand and generate human language, translate languages, write creative content, and answer questions informatively.</p>
+    </div>
+    <div class="edu-box">
+      <h3>Internship</h3>
+      <p>Python Full Stack With Data Analytics</p>
+      <p>June 2025 - December 2025</p>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="skill-box">
+      <h3>Programming Languages</h3>
+      <p>Python, Java, JavaScript, C</p>
+    </div>
+    <div class="skill-box">
+      <h3>Web Development</h3>
+      <p>HTML, CSS, JavaScript, React (Basics)</p>
+    </div>
+    <div class="skill-box">
+      <h3>Database & Tools</h3>
+      <p>MySQL, Excel (VLOOKUP, Data Analytics), Git & GitHub</p>
+    </div>
+    <div class="skill-box">
+      <h3>Data Analytics</h3>
+      <p>Python Libraries (Pandas, NumPy, Matplotlib), SQL Queries</p>
+    </div>
+    <div class="skill-box">
+      <h3>Soft Skills</h3>
+      <p>Teamwork, Problem Solving, Communication, Hardworking</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: hemrajbhongale8@gmail.com</p>
+    <p>Phone: +91 87676 51236</p>
+    <a href="mailto:hemrajbhongale8@gmail.com" class="btn">Send Email</a>
+  </section>
+
+</body>
+</html>
