@@ -1,318 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <!-- Google Fonts Stylish -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
-  <style>
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      scroll-behavior: smooth;
-    }
-    body{
-      background: #0a0a0a;
-      color: #eaeaea;
-      font-family: 'Poppins', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hemraj Bhongale Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Pacifico&family=Great+Vibes&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<style>
+/* General */
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{font-family:'Poppins',sans-serif;background:#0a0a0a;color:#eaeaea;transition:all 0.4s;}
+a{text-decoration:none;}
+section{min-height:100vh;padding:100px 20px;opacity:0;transform:translateY(60px);transition:all 1s ease;}
+section.show{opacity:1;transform:translateY(0);}
 
-    /* Navbar */
-    nav{
-      height: 60px;
-      width: 100%;
-      background-color: #111;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-    }
-    nav a{
-      color: #bbb;
-      font-size: 16px;
-      text-decoration: none;
-      position: relative;
-      transition: 0.3s;
-    }
-    nav a::after{
-      content: "";
-      position: absolute;
-      width: 0;
-      height: 2px;
-      background: #ffffff;
-      left: 0;
-      bottom: -5px;
-      transition: 0.3s;
-    }
-    nav a:hover{
-      color: #eaff00;
-    }
-    nav a:hover::after{
-      width: 100%;
-    }
+/* Navbar */
+nav{position:fixed;top:0;width:100%;height:60px;background:#111;display:flex;justify-content:space-around;align-items:center;z-index:1000;transition:all 0.4s;}
+nav a{color:#bbb;position:relative;transition:0.3s;}
+nav a::after{content:"";position:absolute;width:0;height:2px;background:#fff;left:0;bottom:-5px;transition:0.3s;}
+nav a:hover::after{width:100%;}
+nav a.active{color:#eaff00;}
 
-    /* Sections */
-    section{
-      min-height: 100vh;
-      padding: 100px 20px 50px;
-      opacity: 0;
-      transform: translateY(50px);
-      animation: fadeUp 1s ease forwards;
-    }
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+/* Particles */
+#particles-js{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
 
-    /* Home */
-    #home{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
-    #home h1{
-      font-family: 'Great Vibes', cursive;
-      font-size: 70px;
-      margin-bottom: 15px;
-      background: linear-gradient(90deg, #ff0057, #ff7b00, #00d4ff, #ff0057);
-      background-size: 300% 300%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: gradientFlow 5s infinite linear;
-    }
-    @keyframes gradientFlow {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    #home p{
-      font-size: 20px;
-      color: #ccc;
-      max-width: 600px;
-    }
+/* Home */
+#home{text-align:center;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+#home h1{font-family:'Great Vibes',cursive;font-size:70px;background:linear-gradient(90deg,#ff0057,#ff7b00,#00d4ff,#eaff00);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientFlow 5s linear infinite;}
+@keyframes gradientFlow{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+#home p{margin:15px 0;font-size:20px;color:#ccc;}
+#typewriter{font-size:22px;font-weight:bold;background:linear-gradient(90deg,#ff0057,#ff7b00,#00d4ff,#eaff00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:10px 0;}
+.btn{display:inline-block;padding:12px 25px;margin-top:20px;background:linear-gradient(90deg,#ff0057,#ff7b00);border-radius:30px;color:#fff;transition:0.3s;}
+.btn:hover{transform:scale(1.1);box-shadow:0 0 15px #00fff2;}
 
-    /* Responsive Text */
-    @media (max-width: 768px){
-      #home h1{ font-size: 50px; }
-      #home p{ font-size: 16px; }
-      nav a{ font-size: 14px; }
-    }
-    @media (max-width: 480px){
-      #home h1{ font-size: 38px; }
-      #home p{ font-size: 14px; }
-    }
+/* About */
+#about{background:#121212;}
+#about h2{color:#ff0057;text-align:center;margin-bottom:25px;}
+.about-container{display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:center;}
+#about img{width:180px;border-radius:50%;border:5px solid #fff;transition:0.4s;}
+#about img:hover{transform:scale(1.08) rotate(3deg);box-shadow:0 0 20px #ff0057;}
+#about p{max-width:700px;line-height:1.6;margin-bottom:10px;}
 
-    /* About */
-    #about{
-      background: #121212;
-    }
-    #about h2{
-      color: #ff0057;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    #about div{
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 20px;
-      justify-content: center;
-    }
-    #about img{
-      width: 180px;
-      border-radius: 50%;
-      border: 5px solid #ffffff;
-      transition: 0.4s;
-    }
-    #about img:hover{
-      transform: scale(1.08);
-      box-shadow: 0 0 20px #ff0057;
-    }
-    #about div p{
-      max-width: 700px;
-      line-height: 1.6;
-      margin-bottom: 15px;
-    }
+/* Cards */
+.card{background:#222;padding:20px;border-radius:10px;margin:15px;transition:0.4s;border:1px solid #333;}
+.card:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 0 20px rgba(255,123,0,0.7);}
 
-    /* Education */
-    #education{
-      background: #181818;
-    }
-    #education h2{
-      color: #ff7b00;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-    .edu-box{
-      background: #222;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      transition: 0.4s;
-      border: 1px solid #333;
-    }
-    .edu-box:hover{
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 0 15px rgba(255, 0, 87, 0.6);
-    }
+/* Certifications */
+#certifications{background:#1b1b1b;}
+#certifications h2{color:#00ff88;text-align:center;margin-bottom:20px;}
+.cert-box{background:#222;padding:20px;margin:15px 0;border-radius:10px;border:1px solid #333;transition:0.3s;}
+.cert-box:hover{transform:translateY(-8px) scale(1.05);box-shadow:0 0 20px rgba(0,255,136,0.7);}
+.cert-box h3 a{color:#00ffaa;}
 
-    /* Skills */
-    #skills{
-      background: #151515;
-    }
-    #skills h2{
-      color: #f6ff00;
-      margin-bottom: 25px;
-      text-align: center;
-    }
-    .skill-box{
-      background: #222;
-      padding: 20px;
-      margin: 15px 0;
-      border-radius: 10px;
-      border: 1px solid #333;
-      transition: 0.4s;
-    }
-    .skill-box:hover{
-      transform: translateY(-6px) scale(1.02);
-      box-shadow: 0 0 15px rgba(179, 0, 255, 0.6);
-    }
-    .skill-box h3{
-      color: #00aaff;
-      margin-bottom: 8px;
-    }
-    .skill-box p{
-      color: #ddd;
-    }
+/* Skills */
+#skills{background:#151515;text-align:center;padding:100px 20px;}
+#skills h2{color:#f6ff00;margin-bottom:40px;}
+.skill-box{margin:20px 0;position:relative;text-align:left;max-width:600px;margin-left:auto;margin-right:auto;}
+.skill-box h3{color:#00aaff;margin-bottom:10px;font-size:18px;}
+.skill-bar{width:100%;height:25px;background:#333;border-radius:15px;overflow:hidden;position:relative;}
+.skill-fill{height:100%;width:0%;border-radius:15px;background: linear-gradient(90deg,#ff0057,#ff7b00,#00d4ff,#f6ff00);background-size:200% 100%;animation:shimmer 2s linear infinite;box-shadow:0 0 8px rgba(255,255,255,0.3);transition:width 2s ease-in-out;}
+.skill-bar:hover .skill-fill{box-shadow:0 0 15px #ff7b00,0 0 20px #00d4ff;}
+.skill-percent{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:#fff;font-weight:bold;}
+.skill-box:hover::after{content:attr(data-skill);position:absolute;right:-10px;top:-30px;color:#fff;background:#111;padding:5px 10px;border-radius:5px;font-size:12px;}
+@keyframes shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 
-    /* Contact */
-    #contact{
-      background: #101010;
-      text-align: center;
-    }
-    #contact h2{
-      color: #00d4ff;
-      margin-bottom: 15px;
-    }
+/* Contact */
+#contact{background:#101010;text-align:center;}
+#contact h2{color:#00d4ff;margin-bottom:15px;}
+#contact input,#contact textarea{width:80%;padding:10px;margin:10px 0;border-radius:8px;border:none;transition:0.3s;}
+#contact input:focus,#contact textarea:focus{outline:none;box-shadow:0 0 15px #ff7b00;}
+#contact button{padding:12px 25px;border:none;background:linear-gradient(90deg,#ff0057,#ff7b00);border-radius:30px;color:#fff;cursor:pointer;transition:0.3s;}
+#contact button:hover{transform:scale(1.1);box-shadow:0 0 15px #00fff2;}
 
-    /* Buttons */
-    .btn{
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: linear-gradient(90deg, #ff0057, #ff7b00);
-      color: white;
-      border-radius: 30px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-    .btn:hover{
-      box-shadow: 0 0 15px #00fff2;
-      transform: scale(1.08);
-    }
-  </style>
+/* Responsive */
+@media(max-width:768px){#home h1{font-size:50px;}#home p,#typewriter{font-size:16px;}nav a{font-size:14px;}}
+@media(max-width:480px){#home h1{font-size:38px;}}
+</style>
 </head>
 <body>
 
-  <!-- Navbar -->
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-    <a target="_blank" href="https://www.linkedin.com/in/hemraj-bhongale-1a6870288/">LinkedIn</a>
-  </nav>
+<div id="particles-js"></div>
 
-  <!-- Home -->
-  <section id="home">
-    <h1>I'm Hemraj Bhongale</h1>
-    <p>Welcome to my Portfolio Website. I’m an aspiring Software Developer, CS Student & Intern at Qspider.</p>
-    <a href="#contact" class="btn">Hire Me</a>
-  </section>
+<nav id="navbar">
+  <a href="#home" class="nav-link">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#education" class="nav-link">Education</a>
+  <a href="#certifications" class="nav-link">Certifications</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#contact" class="nav-link">Contact</a>
+  <a target="_blank" href="https://www.linkedin.com/in/hemraj-bhongale-1a6870288/">LinkedIn</a>
+</nav>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About Me</h2>
+<section id="home">
+  <h1>I'm Hemraj Bhongale</h1>
+  <p>Welcome to my Portfolio Website.</p>
+  <p id="typewriter"></p>
+  <a href="#contact" class="btn">Hire Me</a>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <div class="about-container">
+    <img src="./assets/profilrPhoto.jpg" alt="Hemraj Bhongale">
     <div>
-      <img src="./assets/profilrPhoto.jpg" alt="Hemraj Bhongale">
-      <div>
-        <p>I come from a farmer family, where I have learned the true value of hard work, dedication, and consistency. These qualities have shaped my personality and given me the strength to face challenges with a positive mindset. I strongly believe that success comes through continuous effort and a never-give-up attitude.</p>
+      <p>Hello! 👋 I’m <b>Hemraj Bhongale</b>, a passionate Computer Science student and aspiring Software Developer. I come from a farmer family, where I learned the value of <b>hard work</b>.</p>
+      <p>I have completed <b>B.Sc. Computer Science (2022–2025)</b> with <b>CGPA 7.75</b> and now pursuing <b>M.Sc. Computer Science</b>.</p>
+      <p>Interned at <b>QSpiders</b>, gaining experience in <b>Full Stack Development & Data Analytics</b>.</p>
+    </div>
+  </div>
+</section>
 
-        <p>I have successfully completed my <b>B.Sc. in Computer Science</b> from <b>Savitribai Phule Pune University</b> with a <b>7.75 CGPA</b>. During this journey, I gained a solid foundation in computer science concepts, problem-solving, and logical thinking.</p>
+<section id="education">
+  <h2>Education</h2>
+  <div class="card"><h3>B.Sc. Computer Science</h3><p>2022 - 2025 | CGPA: 7.75</p></div>
+  <div class="card"><h3>M.Sc. Computer Science</h3><p>2025 - Present</p></div>
+  <div class="card"><h3>Internship</h3><p>Python Full Stack With Data Analytics (Jun–Dec 2025)</p></div>
+</section>
 
-        <p>Currently, I am pursuing my <b>M.Sc. in Computer Science</b> from <b>PDEA’s Annasaheb Magar College, Hadapsar</b>, which is helping me strengthen my academic knowledge while keeping me aligned with industry requirements.</p>
+<section id="certifications">
+  <h2>Certifications</h2>
+  <div class="cert-box"><h3><a href="https://www.guvi.in/share-certificate/925BS139lzu2d0GA06">Python</a></h3><p>HCL Guvi – AUG 2023</p></div>
+  <div class="cert-box"><h3><a href="https://drive.google.com/file/d/1fVVSNekbdTDsz_Imed586uzkeTKUNZHA/view?pli=1">Google Analytics</a></h3><p>data analysis and interpretation, reporting, and conversion tracking</p></div>
+  <div class="cert-box"><h3><a href="https://drive.google.com/file/d/1jXb3PQ-DXoYHg0bJLNL8psIs7ojf7N-b/view">C++ Programming</a></h3><p>Object-Oriented Programming (OOP) principles, advanced features, and the Standard Template Library (STL).</p></div>
+</section>
 
-        <p>Alongside academics, since <b>June 2025</b>, I have been pursuing a <b>Python Full Stack with Data Analytics</b> course at <b>QSpiders, Hadapsar</b>. This training has given me practical exposure to full-stack development, database management, and data analysis, enhancing both my technical and problem-solving abilities.</p>
+<section id="skills">
+  <h2>Skills</h2>
+  <div class="skill-box" data-skill="Python Advanced">
+    <h3>Python</h3>
+    <div class="skill-bar"><div class="skill-fill" style="width:90%"></div><span class="skill-percent">90%</span></div>
+  </div>
+  <div class="skill-box" data-skill="Java Advanced">
+    <h3>Java</h3>
+    <div class="skill-bar"><div class="skill-fill" style="width:85%"></div><span class="skill-percent">85%</span></div>
+  </div>
+  <div class="skill-box" data-skill="JavaScript Intermediate">
+    <h3>JavaScript</h3>
+    <div class="skill-bar"><div class="skill-fill" style="width:80%"></div><span class="skill-percent">80%</span></div>
+  </div>
+  <div class="skill-box" data-skill="Web Development">
+    <h3>Web Development</h3>
+    <div class="skill-bar"><div class="skill-fill" style="width:75%"></div><span class="skill-percent">75%</span></div>
+  </div>
+  <div class="skill-box" data-skill="Data Analytics">
+    <h3>Data Analytics</h3>
+    <div class="skill-bar"><div class="skill-fill" style="width:70%"></div><span class="skill-percent">70%</span></div>
+  </div>
+</section>
 
-        <p>My ultimate goal is to secure a position in a reputed <b>MNC company</b>, where I can apply my knowledge and continuously grow as a professional. I aspire to work on innovative projects, contribute meaningfully to the organization, and make my family proud by turning my hard work into achievements.</p>
-      </div>
-    </div>
-  </section>
+<section id="contact">
+  <h2>Contact</h2>
+  <form id="contact-form">
+    <input type="text" name="from_name" placeholder="Your Name" required><br>
+    <input type="email" name="from_email" placeholder="Your Email" required><br>
+    <textarea name="message" placeholder="Your Message" rows="5" required></textarea><br>
+    <button type="submit">Send Email</button>
+  </form>
+  <p id="form-message"></p>
+</section>
 
-  <!-- Education -->
-  <section id="education">
-    <h2>Education</h2>
-    <div class="edu-box">
-      <h3>B.Sc. Computer Science</h3>
-      <p>Courses: OS-II, Software Testing, Web Tech-II, Data Analytics, OOP Java-II, Compiler Construction</p>
-      <p>2022 - 2025 </p>
-      <p>Cgpa - 7.75 </p>
-    </div>
-    <div class="edu-box">
-      <h3>Project</h3>
-      <p>Advance AI Chatbot</p>
-      <p>This project aims to develop a powerful Large Language Model (LLM), similar to Google Gemini, capable of performing a wide range of tasks with exceptional accuracy and fluency. It is designed to understand and generate human language, translate languages, write creative content, and answer questions informatively.</p>
-    </div>
-    <div class="edu-box">
-      <h3>Internship</h3>
-      <p>Python Full Stack With Data Analytics</p>
-      <p>June 2025 - December 2025</p>
-    </div>
-  </section>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3.2.0/dist/email.min.js"></script>
+<script>
+// EmailJS
+emailjs.init("YOUR_USER_ID");
+document.getElementById("contact-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  emailjs.sendForm("YOUR_SERVICE_ID","YOUR_TEMPLATE_ID",this)
+  .then(()=>{document.getElementById("form-message").innerText="Message sent successfully!";this.reset();})
+  .catch(()=>{document.getElementById("form-message").innerText="Failed to send message."});
+});
 
-  <!-- Skills -->
-  <section id="skills">
-    <h2>Skills</h2>
-    <div class="skill-box">
-      <h3>Programming Languages</h3>
-      <p>Python, Java, JavaScript, C</p>
-    </div>
-    <div class="skill-box">
-      <h3>Web Development</h3>
-      <p>HTML, CSS, JavaScript, React (Basics)</p>
-    </div>
-    <div class="skill-box">
-      <h3>Database & Tools</h3>
-      <p>MySQL, Excel (VLOOKUP, Data Analytics), Git & GitHub</p>
-    </div>
-    <div class="skill-box">
-      <h3>Data Analytics</h3>
-      <p>Python Libraries (Pandas, NumPy, Matplotlib), SQL Queries</p>
-    </div>
-    <div class="skill-box">
-      <h3>Soft Skills</h3>
-      <p>Teamwork, Problem Solving, Communication, Hardworking</p>
-    </div>
-  </section>
+// Typewriter
+const typewriterText=["Aspiring Software Developer","CS Student","Full Stack & Data Analytics"];
+let i=0,ci=0,txt="",typing=true;
+function typeWriter(){
+  if(typing){
+    if(ci<typewriterText[i].length){txt+=typewriterText[i][ci];document.getElementById("typewriter").innerText=txt;ci++;setTimeout(typeWriter,100);}
+    else{typing=false;setTimeout(typeWriter,1000);}
+  }else{
+    if(ci>0){txt=txt.slice(0,-1);document.getElementById("typewriter").innerText=txt;ci--;setTimeout(typeWriter,50);}
+    else{typing=true;i=(i+1)%typewriterText.length;setTimeout(typeWriter,500);}
+  }
+}
+window.addEventListener("load",typeWriter);
 
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: hemrajbhongale8@gmail.com</p>
-    <p>Phone: +91 87676 51236</p>
-    <a href="mailto:hemrajbhongale8@gmail.com" class="btn">Send Email</a>
-  </section>
+// Scroll Reveal
+const sections=document.querySelectorAll("section");
+const revealOnScroll=()=>{sections.forEach(sec=>{const secTop=sec.getBoundingClientRect().top;if(secTop<window.innerHeight-100)sec.classList.add("show");});}
+window.addEventListener("scroll",revealOnScroll);
+window.addEventListener("load",revealOnScroll);
+
+// Particles.js
+particlesJS("particles-js",{"particles":{"number":{"value":50,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":3}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"}},"modes":{"repulse":{"distance":100}}}});
+</script>
 
 </body>
 </html>
