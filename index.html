@@ -15,14 +15,11 @@ a{text-decoration:none;}
 section{min-height:100vh;padding:100px 20px;opacity:0;transform:translateY(60px);transition:all 1s ease;}
 section.show{opacity:1;transform:translateY(0);}
 
-/* Navbar with boxes */
-nav{position:fixed;top:0;width:100%;background:#111;z-index:1000;transition:all 0.4s;}
-.nav-container{display:flex;justify-content:space-between;align-items:center;padding:10px 20px;flex-wrap:wrap;}
-.nav-logo{color:#fff;font-weight:700;font-size:20px;}
-.nav-links{display:flex;gap:10px;flex-wrap:wrap;}
-.nav-links a{color:#fff;background:#222;padding:10px 15px;border-radius:8px;transition:0.3s;display:inline-block;font-weight:600;}
-.nav-links a:hover{background:linear-gradient(90deg,#ff0057,#ff7b00);color:#fff;transform:scale(1.1);box-shadow:0 0 10px #ff7b00;}
-.nav-toggle{display:none;color:#fff;font-size:24px;cursor:pointer;}
+/* Navbar */
+nav{position:fixed;top:0;width:100%;height:60px;background:#111;display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;z-index:1000;transition:all 0.4s;border-bottom:1px solid #333;border-radius:0 0 15px 15px;}
+nav a{color:#bbb;position:relative;transition:0.3s;padding:10px 15px;background:#222;border-radius:8px;}
+nav a::after{content:"";position:absolute;width:0;height:2px;background:#fff;left:0;bottom:0;transition:0.3s;}
+nav a:hover::after{width:100%;}
 
 /* Particles */
 #particles-js{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}
@@ -90,11 +87,10 @@ nav{position:fixed;top:0;width:100%;background:#111;z-index:1000;transition:all 
 
 /* Responsive */
 @media(max-width:768px){
-  #home h1{font-size:50px;}
-  #home p,#typewriter{font-size:16px;}
-  .nav-links{display:none;width:100%;flex-direction:column;gap:5px;margin-top:10px;}
-  .nav-links.show{display:flex;}
-  .nav-toggle{display:block;}
+  #home h1{font-size:50px;}#home p,#typewriter{font-size:16px;}
+  nav a{font-size:12px;padding:8px 10px;}
+  .timeline-item{width:100%;left:0;margin-left:0;margin-bottom:20px;}
+  .timeline-item.right{left:0;}
 }
 @media(max-width:480px){#home h1{font-size:38px;}}
 </style>
@@ -104,19 +100,12 @@ nav{position:fixed;top:0;width:100%;background:#111;z-index:1000;transition:all 
 <div id="particles-js"></div>
 
 <nav id="navbar">
-  <div class="nav-container">
-    <div class="nav-logo"></div>
-    <div class="nav-toggle" id="nav-toggle"><i class="fas fa-bars"></i></div>
-    <div class="nav-links" id="nav-links">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#about" class="nav-link">About</a>
-      <a href="#education" class="nav-link">Education</a>
-      <a href="#certifications" class="nav-link">Certifications</a>
-      <a href="#skills" class="nav-link">Skills</a>
-      <a href="#contact" class="nav-link">Contact</a>
-      <a target="_blank" href="https://www.linkedin.com/in/hemraj-bhongale-1a6870288/">LinkedIn</a>
-    </div>
-  </div>
+  <a href="#home" class="nav-link">Home</a>
+  <a href="#about" class="nav-link">About</a>
+  <a href="#education" class="nav-link">Education</a>
+  <a href="#skills" class="nav-link">Skills</a>
+  <a href="#contact" class="nav-link">Contact</a>
+  <a target="_blank" href="https://www.linkedin.com/in/hemraj-bhongale-1a6870288/" class="nav-link">LinkedIn</a>
 </nav>
 
 <section id="home">
@@ -245,11 +234,6 @@ window.addEventListener("load",revealOnScroll);
 
 // Particles.js
 particlesJS("particles-js",{"particles":{"number":{"value":50,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle"},"opacity":{"value":0.5},"size":{"value":3},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":3}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"}},"modes":{"repulse":{"distance":100}}}});
-
-// Hamburger toggle
-const navToggle=document.getElementById("nav-toggle");
-const navLinks=document.getElementById("nav-links");
-navToggle.addEventListener("click",()=>{navLinks.classList.toggle("show");});
 </script>
 
 </body>
